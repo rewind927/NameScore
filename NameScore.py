@@ -1,4 +1,5 @@
 import sys
+import re
 
 def countNameScore(dataArray):
     totalScore = 0
@@ -15,12 +16,13 @@ def countNameScore(dataArray):
         i+=1
     return totalScore
 
+def countNameScoreUsingListComprehension(dataArray):
+    totalScore = sum([(index+1)*sum([(ord(ch) - 64) for ch in dataString]) for index, dataString in enumerate(dataArray)])
+    return totalScore
+        
 f = open(sys.argv[1], 'r')
-readData = f.readline()
-readData = readData.strip()
-readData = readData.replace("\"","")
-dataArray = readData.split(",")
+dataArray = re.findall(r'[\w]+', f.readline())
 dataArray.sort()
 
-print countNameScore(dataArray)
+print countNameScoreUsingListComprehension(dataArray)
 
