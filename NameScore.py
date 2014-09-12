@@ -21,7 +21,7 @@ def countNameScoreUsingListComprehension(dataArray):
     return totalScore
         
 f = open(sys.argv[1], 'r')
-dataArray = re.findall(r'[\w]+', f.readline())
+dataArray = re.findall(r'[A-Z]+', f.readline())
 dataArray.sort()
 
 print countNameScoreUsingListComprehension(dataArray)
